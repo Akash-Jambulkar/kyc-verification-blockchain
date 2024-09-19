@@ -1,0 +1,16 @@
+# Node.js dependencies
+node_modules/
+
+# Hardhat and contract artifacts
+artifacts/
+cache/
+
+# Environment variables
+.env
+
+# React build output
+build/
+
+# Logs
+logs/
+*.log
