@@ -1,0 +1,14 @@
+.trust-score-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.trust-score-container h1 {
+  font-size: 2rem;
+  color: #4CAF50;
+}
+
+.trust-score-container p {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
