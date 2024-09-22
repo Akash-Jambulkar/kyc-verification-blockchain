@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom'; // Update this import
 
 const validateInputs = (name, address, idNumber) => {
   if (!name || name.length < 3) return false;
-  if (!address || address.length < 5) return false;
-  if (!idNumber || idNumber.length < 6) return false;
+  if (!address || address.length < 1) return false;
+  if (!idNumber || idNumber.length < 1) return false;
   return true;
 };
 
@@ -33,7 +33,7 @@ const KYCForm = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/kyc', {
+      const response = await fetch('http://localhost:5000/api/kyc/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -33,9 +33,14 @@ app.post('/api/kyc', async (req, res) => {
       [name, address, idNumber, trustScore]
     );
 
+    // Ensure trust_score is a regular number
+    const trustScoreValue = newKYC.rows[0].trust_score instanceof BigInt 
+      ? Number(newKYC.rows[0].trust_score) 
+      : newKYC.rows[0].trust_score;
+
     res.json({
       message: 'KYC data submitted successfully',
-      data: newKYC.rows[0],
+      data: { ...newKYC.rows[0], trust_score: trustScoreValue }, // Use converted trust score
     });
   } catch (err) {
     console.error(err.message);
