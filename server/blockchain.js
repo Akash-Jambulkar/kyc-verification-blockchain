@@ -8,8 +8,8 @@ const storeKYCData = async (data) => {
   const contractAddress = '0xYourContractAddress';
   const contract = new web3.eth.Contract(contractABI, contractAddress);
 
-  // Replace with your contract function
-  await contract.methods.storeData(data.name, data.address, data.idNumber)
+  // Convert trustScore to Number if it's BigInt
+  await contract.methods.storeData(data.name, data.address, data.idNumber, Number(data.trustScore))
     .send({ from: '0xYourEthereumAddress' });
 };
 
