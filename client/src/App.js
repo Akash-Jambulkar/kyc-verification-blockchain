@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';  // Ensure correct path
-import Home from './pages/Home';           // Ensure correct path
-import KYCForm from './pages/KYCForm';     // Ensure correct path
-import TrustScore from './pages/TrustScore';  // Ensure correct path
-import './App.css';  // Global CSS
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import KYCForm from './pages/KYCForm';
+import TrustScoreDashboard from './pages/TrustScoreDashboard';
+import Dashboard from './pages/Dashboard';
 
 const App = () => {
   return (
@@ -13,7 +13,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/kyc-form" element={<KYCForm />} />
-        <Route path="/trust-score" element={<TrustScore />} />
+        <Route path="/trust-score" element={<TrustScoreDashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   );

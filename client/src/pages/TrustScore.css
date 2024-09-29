@@ -3,9 +3,14 @@
   margin-top: 20px;
 }
 
+.trust-score-container.dark {
+  background-color: #001F3F; /* Dark mode background */
+  color: #EAD8B1; /* Light mode text color */
+}
+
 .trust-score-container h1 {
   font-size: 2rem;
-  color: #4CAF50;
+  color: #6A9AB0; /* Accent color */
 }
 
 .trust-score-container p {

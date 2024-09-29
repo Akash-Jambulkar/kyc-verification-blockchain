@@ -1,55 +1,53 @@
 import React, { useEffect, useState } from 'react';
-import { CircularProgress } from '@mui/material'; // Example of using Material UI
+import { CircularProgress } from '@mui/material';
 import web3 from './web3';
-import KYCStorage from './KYCStorage.json';  // Import the ABI
+import KYCStorage from './KYCStorage.json';
+import ThemeToggle from '../components/ThemeToggle';
+import { useTheme } from '../ThemeContext';
 
-const contractAddress = '0x0eB08bdBA4A585E39eC3ded019F2C37F1412f213'; // Replace with your deployed contract address
+const contractAddress = '0x0eB08bdBA4A585E39eC3ded019F2C37F1412f213';
 const contractABI = KYCStorage.abi;
 const contract = new web3.eth.Contract(contractABI, contractAddress);
 
 const TrustScore = () => {
-  const [trustScores, setTrustScores] = useState(null); // For API trust scores
-  const [trustScore, setTrustScore] = useState(null); // For smart contract trust score
+  const { isDarkMode } = useTheme();
+  const [trustScores, setTrustScores] = useState(null);
+  const [trustScore, setTrustScore] = useState(null);
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false); // Added loading state
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchTrustScores = async () => { // Fetch from API
-      setLoading(true); // Set loading state
+    const fetchTrustScores = async () => {
+      setLoading(true);
       try {
         const response = await fetch('http://localhost:5000/api/kyc/trust-score');
         if (!response.ok) {
-          throw new Error('Failed to fetch trust scores'); // Updated error message
+          throw new Error('Failed to fetch trust scores');
         }
         const data = await response.json();
-        setTrustScores(data); // Expecting an array of scores
+        setTrustScores(data);
       } catch (error) {
         setError(error.message);
       } finally {
-        setLoading(false); // Reset loading state
+        setLoading(false);
       }
     };
 
-    const fetchContractTrustScore = async () => { // Fetch from smart contract
+    const fetchContractTrustScore = async () => {
       const accounts = await web3.eth.getAccounts();
       const kyc = await contract.methods.getKYC(accounts[0]).call();
-      setTrustScore(Number(kyc.trustScore)); // Convert BigInt to Number
-    };
-
-    const getBlockNumber = async () => { // Fetch current block number
-      const blockNumber = await web3.eth.getBlockNumber();
-      console.log('Current Block Number:', blockNumber);
+      setTrustScore(Number(kyc.trustScore));
     };
 
     fetchTrustScores();
     fetchContractTrustScore();
-    getBlockNumber(); // Call to get block number
   }, []);
 
   return (
-    <div>
+    <div className={`trust-score-container ${isDarkMode ? 'dark' : 'light'}`}>
+      <ThemeToggle />
       <h1>Trust Scores</h1>
-      {loading ? ( // Show loading message while fetching
+      {loading ? (
         <CircularProgress />
       ) : error ? (
         <p>Error fetching Trust Scores: {error}</p>
@@ -57,7 +55,7 @@ const TrustScore = () => {
         <>
           {trustScores !== null ? (
             <div>
-              {trustScores.map((score, index) => ( // Map through trustScores array
+              {trustScores.map((score, index) => (
                 <div key={index}>
                   <p>Your Trust Score from API: {score.trust_score}</p>
                   <CircularProgress variant="determinate" value={score.trust_score} />

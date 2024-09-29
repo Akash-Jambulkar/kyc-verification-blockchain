@@ -1,0 +1,20 @@
+import React from 'react';
+import { useAuth, RedirectToSignIn } from '@clerk/clerk-react';
+
+function Dashboard() {
+  const { isSignedIn, user } = useAuth();
+
+  // Redirect to sign-in if the user is not authenticated
+  if (!isSignedIn) {
+    return <RedirectToSignIn />;
+  }
+
+  return (
+    <div>
+      <h1>Welcome, {user.firstName} {user.lastName}</h1> {/* Display user's first and last name */}
+      {/* User-specific content here */}
+    </div>
+  );
+}
+
+export default Dashboard;

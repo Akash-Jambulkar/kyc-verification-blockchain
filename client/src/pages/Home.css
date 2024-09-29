@@ -1,34 +1,44 @@
 .home-container {
     text-align: center;
     margin-top: 50px;
-  }
-  
-  .home-container h1 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-  }
-  
-  .home-container p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
-  }
-  
-  .home-buttons {
+}
+
+.home-container.dark {
+    background-color: #001F3F; /* Dark mode background */
+    color: #EAD8B1; /* Light mode text color */
+}
+
+.home-header {
+    margin-bottom: 40px;
+}
+
+.home-features {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .btn {
-    background-color: #333;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+
+.feature {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    width: 30%;
+}
+
+.home-engagement {
+    margin-top: 40px;
+}
+
+.btn {
+    background-color: #3A6D8C; /* Secondary color */
     color: white;
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 5px;
     font-size: 1em;
-  }
-  
-  .btn:hover {
-    background-color: #555;
-  }
-  
+}
+
+.btn:hover {
+    background-color: #6A9AB0; /* Accent color */
+}
