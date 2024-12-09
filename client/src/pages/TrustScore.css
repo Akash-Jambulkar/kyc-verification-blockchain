@@ -1,14 +1,65 @@
 .trust-score-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.trust-score-header {
   text-align: center;
-  margin-top: 20px;
+  margin-bottom: 3rem;
 }
 
-.trust-score-container h1 {
-  font-size: 2rem;
-  color: #4CAF50;
+.trust-score-header h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
 }
 
-.trust-score-container p {
-  font-size: 1.5rem;
-  margin-top: 10px;
+.trust-score-header p {
+  color: #64748b;
+  font-size: 1.125rem;
+}
+
+.score-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.score-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.score-value {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin: 1rem 0;
+}
+
+.score-label {
+  color: #64748b;
+  font-weight: 500;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.error-message {
+  text-align: center;
+  padding: 1rem;
+  background-color: #fee2e2;
+  color: #dc2626;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
 }

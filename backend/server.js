@@ -81,7 +81,7 @@ const storeKYCOnBlockchain = async (name, address, idNumber, trustScore) => {
     const tx = {
       to: contractAddress,
       data: txData,
-      gas: 2000000,
+      gas: 33135,
       gasPrice: await web3.eth.getGasPrice(),
       from: account,
     };

@@ -12,7 +12,7 @@ if (window.ethereum) {
 } else if (window.web3) {
   web3 = new Web3(window.web3.currentProvider);
 } else {
-  web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:7545')); // Connect to Ganache
+  web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:8545')); // Connect to Ganache
 }
 
 export default web3;
