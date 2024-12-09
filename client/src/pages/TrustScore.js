@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from 'react';
+<<<<<<< HEAD
 import { CircularProgress, Pagination } from '@mui/material';
 import { Shield, User, MapPin, CreditCard } from 'lucide-react';
 import web3 from './web3';
 import KYCStorage from './KYCStorage.json';
+=======
+import { CircularProgress } from '@mui/material';
+import web3 from './web3';
+import KYCStorage from './KYCStorage.json';
+import ThemeToggle from '../components/ThemeToggle';
+import { useTheme } from '../ThemeContext';
+>>>>>>> e9e2651882b856433bdb6cad60a594264125e5ed
 
 const contractAddress = '0x0eB08bdBA4A585E39eC3ded019F2C37F1412f213';
 const contractABI = KYCStorage.abi;
@@ -11,10 +19,18 @@ const contract = new web3.eth.Contract(contractABI, contractAddress);
 const ITEMS_PER_PAGE = 10;
 
 const TrustScore = () => {
+<<<<<<< HEAD
   const [trustScores, setTrustScores] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [page, setPage] = useState(1);
+=======
+  const { isDarkMode } = useTheme();
+  const [trustScores, setTrustScores] = useState(null);
+  const [trustScore, setTrustScore] = useState(null);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+>>>>>>> e9e2651882b856433bdb6cad60a594264125e5ed
 
   useEffect(() => {
     const fetchTrustScores = async () => {
@@ -22,7 +38,11 @@ const TrustScore = () => {
       try {
         const response = await fetch('http://localhost:5000/api/kyc/trust-score');
         if (!response.ok) {
+<<<<<<< HEAD
           throw new Error(`Failed to fetch trust scores: ${response.statusText}`);
+=======
+          throw new Error('Failed to fetch trust scores');
+>>>>>>> e9e2651882b856433bdb6cad60a594264125e5ed
         }
         const data = await response.json();
         setTrustScores(data);
@@ -32,7 +52,19 @@ const TrustScore = () => {
         setLoading(false);
       }
     };
+<<<<<<< HEAD
     fetchTrustScores();
+=======
+
+    const fetchContractTrustScore = async () => {
+      const accounts = await web3.eth.getAccounts();
+      const kyc = await contract.methods.getKYC(accounts[0]).call();
+      setTrustScore(Number(kyc.trustScore));
+    };
+
+    fetchTrustScores();
+    fetchContractTrustScore();
+>>>>>>> e9e2651882b856433bdb6cad60a594264125e5ed
   }, []);
 
   const getTrustScoreColor = (score) => {
@@ -54,6 +86,7 @@ const TrustScore = () => {
   if (error) return <p>{error}</p>;
 
   return (
+<<<<<<< HEAD
     <div className="container mx-auto">
       <h1 className="text-2xl font-bold mb-6">KYC Verification and Trust Scores</h1>
 
@@ -106,6 +139,39 @@ const TrustScore = () => {
           color="primary"
         />
       </div>
+=======
+    <div className={`trust-score-container ${isDarkMode ? 'dark' : 'light'}`}>
+      <ThemeToggle />
+      <h1>Trust Scores</h1>
+      {loading ? (
+        <CircularProgress />
+      ) : error ? (
+        <p>Error fetching Trust Scores: {error}</p>
+      ) : (
+        <>
+          {trustScores !== null ? (
+            <div>
+              {trustScores.map((score, index) => (
+                <div key={index}>
+                  <p>Your Trust Score from API: {score.trust_score}</p>
+                  <CircularProgress variant="determinate" value={score.trust_score} />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>No Trust Scores available from API.</p>
+          )}
+          {trustScore !== null ? (
+            <div>
+              <p>Your Trust Score from Smart Contract: {trustScore}</p>
+              <CircularProgress variant="determinate" value={trustScore} />
+            </div>
+          ) : (
+            <p>No Trust Score available from Smart Contract.</p>
+          )}
+        </>
+      )}
+>>>>>>> e9e2651882b856433bdb6cad60a594264125e5ed
     </div>
   );
 };

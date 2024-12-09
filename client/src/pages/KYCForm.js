@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './KYCForm.css';
-import { useNavigate } from 'react-router-dom'; // Update this import
+import { useNavigate } from 'react-router-dom';
+import ThemeToggle from '../components/ThemeToggle';
+import { useTheme } from '../ThemeContext';
 
 const validateInputs = (name, address, idNumber) => {
   if (!name || name.length < 3) return false;
@@ -10,13 +12,14 @@ const validateInputs = (name, address, idNumber) => {
 };
 
 const KYCForm = () => {
+  const { isDarkMode } = useTheme();
   const [formData, setFormData] = useState({
     name: '',
     address: '',
     idNumber: '',
   });
   const [status, setStatus] = useState('');
-  const navigate = useNavigate(); // Update this line
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -52,7 +55,8 @@ const KYCForm = () => {
   };
 
   return (
-    <div className="kyc-form-container">
+    <div className={`kyc-form-container ${isDarkMode ? 'dark' : 'light'}`}>
+      <ThemeToggle />
       <h1>KYC Verification Form</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">

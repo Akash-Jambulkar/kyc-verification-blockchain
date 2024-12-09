@@ -7,6 +7,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
+<<<<<<< HEAD
     <nav className="bg-white border-b sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
@@ -103,6 +104,13 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
+=======
+    <nav>
+      <Link to="/">Home</Link>
+      <Link to="/kyc-form">KYC Form</Link>
+      <Link to="/trust-score">Trust Score</Link>
+      <Link to="/dashboard">Dashboard</Link>
+>>>>>>> e9e2651882b856433bdb6cad60a594264125e5ed
     </nav>
   );
 };

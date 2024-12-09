@@ -24,7 +24,21 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+<<<<<<< HEAD
   @apply bg-gray-50;
+=======
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.light {
+  background-color: #EAD8B1; /* Light background */
+  color: #001F3F; /* Dark text */
+}
+
+body.dark {
+  background-color: #001F3F; /* Dark background */
+  color: #EAD8B1; /* Light text */
+>>>>>>> e9e2651882b856433bdb6cad60a594264125e5ed
 }
 
 #root {
@@ -33,6 +47,7 @@ body {
   min-height: 100vh;
 }
 
+<<<<<<< HEAD
 @layer components {
   .container {
     @apply px-4 mx-auto max-w-7xl;
@@ -50,3 +65,19 @@ body {
     @apply text-gray-700 bg-white border border-gray-300 hover:bg-gray-50;
   }
 }
+=======
+.theme-toggle {
+  margin: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #3A6D8C; /* Secondary color */
+  color: white;
+  font-size: 1em;
+}
+
+.theme-toggle:hover {
+  background-color: #6A9AB0; /* Accent color */
+}
+>>>>>>> e9e2651882b856433bdb6cad60a594264125e5ed

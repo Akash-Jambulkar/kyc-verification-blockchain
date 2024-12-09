@@ -1,0 +1,31 @@
+.dashboard-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.dashboard-container.dark {
+  background-color: #001F3F; /* Dark mode background */
+  color: #EAD8B1; /* Light mode text color */
+}
+
+.trust-score-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.trust-score-card {
+  background-color: #EAD8B1; /* Light mode background */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.trust-score-card.dark {
+  background-color: #001F3F; /* Dark mode background */
+  color: #EAD8B1; /* Light mode text color */
+}
